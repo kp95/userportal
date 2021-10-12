@@ -6,5 +6,6 @@ import com.userportal.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	
+	User findUserByEmail(String email);
+	User findUserByUsername(String username);
 }
