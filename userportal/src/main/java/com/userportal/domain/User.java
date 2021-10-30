@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -20,7 +21,10 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String profileImageUrl;
+    
+    @Lob
+    private Byte[] profileImage;
+    
     private Date lastLoginDate;
     private Date lastLoginDateDisplay;
     @CreationTimestamp
@@ -37,7 +41,7 @@ public class User {
     
     
 	public User(String userId, String firstName, String lastName, String username, String password, String email,
-			String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, String role, String[] authorities,
+			Byte[] profileImage, Date lastLoginDate, Date lastLoginDateDisplay, String role, String[] authorities,
 			boolean isActive, boolean isNotLocked) {
 		super();
 		this.userId = userId;
@@ -46,7 +50,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.profileImageUrl = profileImageUrl;
+		this.profileImage = profileImage;
 		this.lastLoginDate = lastLoginDate;
 		this.lastLoginDateDisplay = lastLoginDateDisplay;
 		this.role = role;
@@ -113,13 +117,7 @@ public class User {
 		this.email = email;
 	}
 
-	public String getProfileImageUrl() {
-		return profileImageUrl;
-	}
-
-	public void setProfileImageUrl(String profileImageUrl) {
-		this.profileImageUrl = profileImageUrl;
-	}
+	
 
 	public Date getLastLoginDate() {
 		return lastLoginDate;
@@ -175,6 +173,18 @@ public class User {
 
 	public void setNotLocked(boolean isNotLocked) {
 		this.isNotLocked = isNotLocked;
+	}
+
+
+
+	public Byte[] getProfileImage() {
+		return profileImage;
+	}
+
+
+
+	public void setProfileImage(Byte[] profileImage) {
+		this.profileImage = profileImage;
 	}
 	
 }
