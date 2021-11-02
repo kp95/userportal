@@ -27,8 +27,10 @@ public class UserServiceImpl {
 	}
 	
 	public User findByEmail(String email) {
+		
 		return repo.findUserByEmail(email);
 	}
+	
 	
 	public User findByUsername(String username) {
 		return repo.findUserByUsername(username);
