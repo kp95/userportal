@@ -2,6 +2,7 @@ package com.userportal.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class User {
@@ -18,14 +20,17 @@ public class User {
     private String userId;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String username;
     private String password;
+    @Column(unique = true)
     private String email;
     
     @Lob
     private Byte[] profileImage;
     
     private Date lastLoginDate;
+    //@UpdateTimestamp
     private Date lastLoginDateDisplay;
     @CreationTimestamp
     private Date joinDate;
